@@ -15,3 +15,17 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
+  kafka:
+    bootstrap-servers: localhost:29092
+    client-id:
+    properties:
+      sasl:
+        mechanism: PLAIN
+        jaas:
+          config: #{BILLING-KAFKA-CONFIG}#
+      security:
+        protocol: SASL_SSL
+    producer:
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+
